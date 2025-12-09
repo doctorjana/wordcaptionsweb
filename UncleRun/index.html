@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncle Run - Endless Running Adventure</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+
+        .game-preview {
+            width: 600px;
+            height: 300px;
+            background: linear-gradient(to bottom, #87CEEB 0%, #DEB887 70%, #8B7355 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 5px solid #fff;
+        }
+
+        .uncle {
+            width: 60px;
+            height: 80px;
+            background: #FF6B35;
+            position: absolute;
+            bottom: 80px;
+            left: 100px;
+            border-radius: 10px 10px 5px 5px;
+            animation: jump 2s infinite ease-in-out;
+        }
+
+        .uncle::before {
+            content: '';
+            width: 40px;
+            height: 40px;
+            background: #FFE5B4;
+            border-radius: 50%;
+            position: absolute;
+            top: -30px;
+            left: 10px;
+        }
+
+        .uncle::after {
+            content: '';
+            width: 30px;
+            height: 15px;
+            background: #333;
+            position: absolute;
+            top: -20px;
+            left: 15px;
+            border-radius: 0 0 50% 50%;
+        }
+
+        @keyframes jump {
+            0%, 100% { bottom: 80px; }
+            50% { bottom: 180px; }
+        }
+
+        .obstacle {
+            width: 50px;
+            height: 50px;
+            background: #8B4513;
+            position: absolute;
+            bottom: 80px;
+            right: -50px;
+            border-radius: 8px;
+            animation: moveObstacle 3s linear infinite;
+        }
+
+        .obstacle:nth-child(3) {
+            animation-delay: 1.5s;
+            background: #654321;
+        }
+
+        @keyframes moveObstacle {
+            0% { right: -50px; }
+            100% { right: 650px; }
+        }
+
+        .ground {
+            width: 100%;
+            height: 80px;
+            background: #8B7355;
+            position: absolute;
+            bottom: 0;
+            border-top: 3px dashed #654321;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .play-store-btn {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid #fff;
+        }
+
+        .play-store-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+
+        .play-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, #34A853 0%, #4285F4 25%, #EA4335 50%, #FBBC04 100%);
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .game-preview {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏃 UNCLE RUN 🏃</h1>
+            <p class="tagline">Navigate the Streets, Dodge the Chaos!</p>
+        </header>
+
+        <div class="hero">
+            <div class="game-preview">
+                <div class="uncle"></div>
+                <div class="obstacle"></div>
+                <div class="obstacle"></div>
+                <div class="ground"></div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Endless Fun</h3>
+                <p>Run as far as you can through the busy Indian streets!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Quick Reflexes</h3>
+                <p>Jump over obstacles and beat your high score!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Challenge Yourself</h3>
+                <p>Get faster as you run. How long can you survive?</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-bottom: 30px; font-size: 2rem;">Ready to Run?</h2>
+            <a href="https://play.google.com/store" class="play-store-btn" target="_blank">
+                <span class="play-icon"></span>
+                Download on Play Store
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Uncle Run. All rights reserved.</p>
+            <p style="margin-top: 10px;">Made with ❤️ for endless entertainment</p>
+        </footer>
+    </div>
+</body>
+</html>
