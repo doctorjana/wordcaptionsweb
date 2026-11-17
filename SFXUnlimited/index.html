@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101116">
+  <meta name="description" content="SFX Unlimited — create unique AI sound effects from simple text prompts.">
+  <title>SFX Unlimited – AI Sound Effects Generator</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #101116;
+      --panel: #1b1c24;
+      --text: #f4f2fa;
+      --muted: #bcb7c9;
+      --purple: #8538f5;
+      --cyan: #42d4ef;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      padding: 28px 18px; color: var(--text);
+      background: radial-gradient(ellipse at 50% 0%, #292044 0%, var(--bg) 58%);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main {
+      width: min(100%, 620px); text-align: center; padding: 42px 30px;
+      background: rgba(27, 28, 36, .92); border: 1px solid #30303d;
+      border-radius: 28px; box-shadow: 0 24px 80px #0008;
+    }
+    .mark {
+      width: 92px; height: 92px; margin: 0 auto 22px; display: grid;
+      place-items: center; border-radius: 25px;
+      background: linear-gradient(140deg, var(--purple), #5425c7 58%, #087eaa);
+      box-shadow: 0 10px 34px #8538f566;
+    }
+    .mark svg { width: 54px; height: 54px; }
+    h1 { margin: 0; font-size: clamp(2rem, 7vw, 3rem); letter-spacing: -.04em; }
+    .tagline { margin: 12px 0 0; color: var(--cyan); font-weight: 650; font-size: 1.05rem; }
+    p { color: var(--muted); line-height: 1.7; margin: 18px auto 0; max-width: 460px; }
+    .features {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin: 30px 0;
+    }
+    .feature {
+      padding: 15px 9px; border-radius: 16px; background: #24252f;
+      color: #e8e3f1; font-size: .9rem;
+    }
+    .feature span { display: block; font-size: 1.35rem; margin-bottom: 7px; }
+    .cta {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 54px; padding: 0 25px; border-radius: 999px;
+      color: white; text-decoration: none; font-weight: 750; font-size: 1rem;
+      background: linear-gradient(100deg, var(--purple), #6339e8 58%, #087fbd);
+      box-shadow: 0 8px 26px #7138e955; transition: transform .18s, filter .18s;
+    }
+    .cta:hover { transform: translateY(-2px); filter: brightness(1.1); }
+    .cta:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+    footer { margin-top: 26px; color: #858191; font-size: .82rem; }
+    @media (max-width: 430px) {
+      main { padding: 34px 20px; }
+      .features { grid-template-columns: 1fr; }
+      .feature { display: flex; align-items: center; justify-content: center; gap: 10px; }
+      .feature span { margin: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 64 64" fill="none">
+        <path d="M8 26v12M17 17v30M26 9v46M35 20v24M44 14v36M53 25v14"
+          stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1>SFX Unlimited</h1>
+    <div class="tagline">Create any sound. Unlimited possibilities.</div>
+    <p>Turn simple text prompts into unique sound effects. Bring your ideas to life with AI-powered sound generation.</p>
+
+    <section class="features" aria-label="App highlights">
+      <div class="feature"><span aria-hidden="true">✦</span>Text-to-sound</div>
+      <div class="feature"><span aria-hidden="true">♫</span>Creative sound effects</div>
+      <div class="feature"><span aria-hidden="true">◉</span>Listen and save</div>
+    </section>
+
+    <a class="cta"
+       href="https://play.google.com/store/apps/details?id=com.cooldude.sfxunlimited"
+       aria-label="Get SFX Unlimited on Google Play">
+      Get it on Google Play
+      <span aria-hidden="true">↗</span>
+    </a>
+    <footer> SFX Unlimited · AI Sound Effects Generator </footer>
+  </main>
+</body>
+</html>
